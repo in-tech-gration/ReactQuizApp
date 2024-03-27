@@ -1,0 +1,20 @@
+.container-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.restart {
+  background: green;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+.restart:hover {
+  background-color: rgb(35, 4, 101);
+}

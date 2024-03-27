@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "What is the best way to share state among Components?",
+    "correctAnswer": "Context API",
+    "incorrectAnswer": "useEffect"
+  },
+  {
+    "id": 2,
+    "question": "Which variable will retain its value upon re-render?",
+    "correctAnswer": "A Ref",
+    "incorrectAnswer": "local variable using const"
+  },
+  {
+    "id": 3,
+    "question": "How many arguments does useEffect accept?",
+    "correctAnswer": "2",
+    "incorrectAnswer": "1"
+  },
+  {
+    "id": 4,
+    "question": "What is the purpose of React's virtual DOM?",
+    "correctAnswer": "Improve performance by minimizing DOM manipulation",
+    "incorrectAnswer": "It has no purpose, it's just a concept"
+  },
+  {
+    "id": 5,
+    "question": "What is JSX in React?",
+    "correctAnswer": "A syntax extension for JavaScript",
+    "incorrectAnswer": "A type of state management library"
+  },
+  {
+    "id": 6,
+    "question": "What is the purpose of the React `useState` hook?",
+    "correctAnswer": "To add state to functional components",
+    "incorrectAnswer": "To fetch data from an API"
+  },
+  {
+    "id": 7,
+    "question": "What is the purpose of React's `useContext` hook?",
+    "correctAnswer": "To consume context values in functional components",
+    "incorrectAnswer": "To create context providers in functional components"
+  },
+  {
+    "id": 8,
+    "question": "What is the purpose of React Router?",
+    "correctAnswer": "To enable routing and navigation in React applications",
+    "incorrectAnswer": "To manage state in React components"
+  },
+  {
+    "id": 9,
+    "question": "What is the purpose of the `useEffect` hook in React?",
+    "correctAnswer": "To perform side effects in functional components",
+    "incorrectAnswer": "To handle component rendering in class components"
+  },
+  {
+    "id": 10,
+    "question": "What is the purpose of React's `setState` method?",
+    "correctAnswer": "To update the state of a component",
+    "incorrectAnswer": "To define initial state in a component"
+  }
+]
