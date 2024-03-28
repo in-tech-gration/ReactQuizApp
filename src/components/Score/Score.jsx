@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 
 export default function Score() {
   const {
+    questions,
     correctAnswersCount,
     setCorrectAnswersCount,
     setCurrentQuestionIndex,
@@ -14,6 +15,7 @@ export default function Score() {
   } = useContext(QuizContainerContext);
 
   const [error, setError] = useState(null);
+  const totalQuestions = questions.length;
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -55,8 +57,8 @@ export default function Score() {
   return (
     <div className="container-score">
       <h1 className="score">
-        Your Score: <span className="correct-count">{correctAnswersCount}</span>
-        /10
+        Your Score: <span className="correct-count">{correctAnswersCount}</span>{" "}
+        / {totalQuestions}
       </h1>
       <div className="retry">
         <h2 className="restart-question">Do you wish to play again?</h2>

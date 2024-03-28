@@ -71,3 +71,9 @@
     transform: translateY(0);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .score {
+    font-size: 40px;
+  }
+}

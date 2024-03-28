@@ -16,15 +16,15 @@ export default function GameMain() {
       <Questions key={currentQuestion.id} question={currentQuestion} />
       <Progress />
       <div className="star-thinking-icons">
-        <FaDotCircle className="circle" color="gold" size={35} />
+        <FaDotCircle className="circle" color="gray" size={35} />
         <GiThink size={40} />
-        <FaDotCircle className="circle" color="gold" size={35} />
+        <FaDotCircle className="circle" color="gray" size={35} />
         <GiThink size={40} />
-        <FaDotCircle className="circle" color="gold" size={35} />
+        <FaDotCircle className="circle" color="gray" size={35} />
         <GiThink size={40} />
-        <FaDotCircle className="circle" color="gold" size={35} />
+        <FaDotCircle className="circle" color="gray" size={35} />
         <GiThink size={40} />
-        <FaDotCircle className="circle" color="gold" size={35} />
+        <FaDotCircle className="circle" color="gray" size={35} />
         <GiThink size={40} />
       </div>
     </div>
