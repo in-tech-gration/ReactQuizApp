@@ -7,7 +7,7 @@
 }
 
 .restart {
-  background: green;
+  background: rgb(35, 117, 106);
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -17,4 +17,8 @@
 
 .restart:hover {
   background-color: rgb(35, 4, 101);
+}
+
+.restart-question {
+  margin-bottom: 40px;
 }

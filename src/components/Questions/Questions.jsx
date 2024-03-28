@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
 import { QuizContainerContext } from "../../QuizContainerContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Questions.css";
+import { FaCheck } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default function Questions() {
   const {
@@ -17,10 +18,16 @@ export default function Questions() {
   const currentQuestion = questions[currentQuestionIndex];
   const totalQuestions = questions.length;
 
-  // const shuffledAnswers = [
-  //   currentQuestion.correctAnswer,
-  //   currentQuestion.incorrectAnswer,
-  // ].sort(() => Math.random() - 0.5);
+  const [shuffledAnswers, setShuffledAnswers] = useState([]);
+  const [isWrongAnswer, setIsWrongAnswer] = useState(false);
+
+  useEffect(() => {
+    const shuffled = [
+      currentQuestion.correctAnswer,
+      currentQuestion.incorrectAnswer,
+    ].sort(() => Math.random() - 0.5);
+    setShuffledAnswers(shuffled);
+  }, [currentQuestion.correctAnswer, currentQuestion.incorrectAnswer]);
 
   const handleAnswer = (selectedAnswer) => {
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
@@ -35,6 +42,8 @@ export default function Questions() {
 
     if (isCorrect) {
       setCorrectAnswersCount((prevCount) => prevCount + 1);
+    } else {
+      setIsWrongAnswer(true);
     }
 
     const updatedAnsweredQuestions = [
@@ -49,6 +58,7 @@ export default function Questions() {
     if (!allQuestionsAnswered) {
       setTimeout(() => {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        setIsWrongAnswer(false);
       }, 2000);
     }
   };
@@ -57,36 +67,44 @@ export default function Questions() {
     <div className="questions-container">
       <h1 className="question-text">{currentQuestion.question}</h1>
       <div className="answers-container">
-        {[currentQuestion.correctAnswer, currentQuestion.incorrectAnswer].map(
-          (answer, index) => {
-            const isAnswered = answeredQuestions.includes(currentQuestionIndex);
-            const isSelectedAnswerCorrect =
-              answer === currentQuestion.correctAnswer;
-            const isSelected = currentQuestion.selectedAnswer === answer;
+        {shuffledAnswers.map((answer, index) => {
+          const isAnswered = answeredQuestions.includes(currentQuestionIndex);
+          const isSelectedAnswerCorrect =
+            answer === currentQuestion.correctAnswer;
+          const isSelected = currentQuestion.selectedAnswer === answer;
 
-            let buttonClassName = "answer-button";
-            if (isAnswered) {
-              if (isSelected) {
-                buttonClassName += isSelectedAnswerCorrect
-                  ? " correct"
-                  : " incorrect";
-              } else if (answer === currentQuestion.correctAnswer) {
-                buttonClassName += " correct";
-              }
+          let buttonClassName = "answer-button";
+          if (isAnswered) {
+            if (isSelected) {
+              buttonClassName += isSelectedAnswerCorrect
+                ? " correct"
+                : " incorrect";
+            } else if (answer === currentQuestion.correctAnswer) {
+              buttonClassName += " correct";
             }
-
-            return (
-              <button
-                key={index}
-                className={buttonClassName}
-                onClick={() => handleAnswer(answer)}
-                disabled={isAnswered}
-              >
-                {answer}
-              </button>
-            );
           }
-        )}
+
+          if (isSelected && !isSelectedAnswerCorrect && isWrongAnswer) {
+            buttonClassName += " wrong-answer-animation";
+          }
+
+          return (
+            <button
+              key={index}
+              className={buttonClassName}
+              onClick={() => handleAnswer(answer)}
+              disabled={isAnswered}
+            >
+              {answer}
+              {isSelected && isSelectedAnswerCorrect && (
+                <FaCheck className="check" />
+              )}
+              {isSelected && !isSelectedAnswerCorrect && (
+                <FaTimes className="wrong-answer-icon" />
+              )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

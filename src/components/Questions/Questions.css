@@ -5,10 +5,18 @@
   justify-content: center;
   text-align: center;
   margin-top: 50px;
+  height: 400px;
+  overflow-y: auto;
 }
 
-.question-text {
-  margin-bottom: 50px;
+.answers-container {
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .answers-container {
@@ -22,11 +30,16 @@
 .answer-button {
   margin-top: 10px;
   width: 150px;
-  height: 70px;
-  padding-right: 10px;
-  padding-left: 10px;
+  height: 90px;
+  padding: 10px;
   cursor: pointer;
   border: none;
+  background-color: rgb(215, 207, 207);
+  font-size: 16px;
+}
+
+.answer-button:hover {
+  background-color: rgb(166, 163, 163);
 }
 
 .correct {
@@ -34,7 +47,40 @@
   color: white;
 }
 
+.correct:hover {
+  background-color: green;
+}
+
 .incorrect {
   background-color: red;
   color: white;
+}
+
+.incorrect:hover {
+  background-color: red;
+}
+
+.check {
+  margin-left: 7px;
+}
+
+.wrong-answer-icon {
+  margin-left: 5px;
+}
+
+.wrong-answer-animation {
+  animation: sideToSide 0.5s ease infinite;
+  margin-left: 10px;
+}
+
+@keyframes sideToSide {
+  0% {
+    transform: translateX(-7px);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+  100% {
+    transform: translateX(-7px);
+  }
 }

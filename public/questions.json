@@ -9,7 +9,7 @@
     "id": 2,
     "question": "Which variable will retain its value upon re-render?",
     "correctAnswer": "A Ref",
-    "incorrectAnswer": "local variable using const"
+    "incorrectAnswer": "Local variable using const"
   },
   {
     "id": 3,

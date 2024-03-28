@@ -30,7 +30,7 @@ export default function QuizContainer() {
             "Error parsing JSON data. Please check the format of the JSON file."
           );
         } else {
-          setError("Failed to fetch products. Please try again later.");
+          setError(`Failed to fetch questions: ${error.message}`);
         }
       } finally {
         setLoading(false);
@@ -55,11 +55,13 @@ export default function QuizContainer() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   if (error) {
-    return <p style={{ color: "red" }}>Something went wrong {error} </p>;
+    return (
+      <p style={{ color: "red" }}>{`Something went wrong ${error.message} `}</p>
+    );
   }
 
   const allQuestionsAnswered = answeredQuestions.length === totalQuestions;

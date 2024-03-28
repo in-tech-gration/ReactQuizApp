@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { QuizContainerContext } from "../../QuizContainerContext";
 import "./Progress.css";
 import { FaStar } from "react-icons/fa";
+import { AiFillForward } from "react-icons/ai";
 
 export default function Progress() {
   const { answeredQuestions, correctAnswersCount, questions } =
@@ -40,8 +41,9 @@ export default function Progress() {
           {index + 1}
         </div>
       ))}
-      <FaStar color="gold" size={20} />
+      <FaStar color="black" size={30} />
       <div className="correct-answers-count">{correctAnswersCount}</div>
+      <AiFillForward className="arrow" color="gray" size={40} />
     </div>
   );
 }
