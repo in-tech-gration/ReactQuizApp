@@ -36,6 +36,7 @@
   border: none;
   background-color: rgb(215, 207, 207);
   font-size: 16px;
+  border-radius: 5px;
 }
 
 .answer-button:hover {

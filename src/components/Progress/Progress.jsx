@@ -41,9 +41,9 @@ export default function Progress() {
           {index + 1}
         </div>
       ))}
-      <FaStar color="black" size={30} />
+      <FaStar className="star" color="black" size={35} />
       <div className="correct-answers-count">{correctAnswersCount}</div>
-      <AiFillForward className="arrow" color="gray" size={40} />
+      <AiFillForward className="arrow" color="gray" size={45} />
     </div>
   );
 }

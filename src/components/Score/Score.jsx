@@ -1,6 +1,8 @@
 import { QuizContainerContext } from "../../QuizContainerContext";
 import { useContext, useEffect, useState } from "react";
 import "./Score.css";
+import { GiJumpingDog } from "react-icons/gi";
+import { FaStar } from "react-icons/fa";
 
 export default function Score() {
   const {
@@ -52,11 +54,19 @@ export default function Score() {
 
   return (
     <div className="container-score">
-      <h1 className="score">Your Score: {correctAnswersCount}/10</h1>
-      <h2 className="restart-question">Do you wish to play again?</h2>
-      <button className="restart" onClick={resetQuiz}>
-        Restart Quiz
-      </button>
+      <h1 className="score">
+        Your Score: <span className="correct-count">{correctAnswersCount}</span>
+        /10
+      </h1>
+      <div className="retry">
+        <h2 className="restart-question">Do you wish to play again?</h2>
+        <button className="restart-button" onClick={resetQuiz}>
+          Restart Quiz
+        </button>
+        <FaStar className="star-2" color="gold" size={35} />
+        <GiJumpingDog className="dog-icon" size={150} />
+        <FaStar className="star-2" color="gold" size={35} />
+      </div>
     </div>
   );
 }
