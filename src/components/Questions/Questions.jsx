@@ -20,6 +20,7 @@ export default function Questions() {
 
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
   const [isWrongAnswer, setIsWrongAnswer] = useState(false);
+  const [selectedAnswerMessage, setSelectedAnswerMessage] = useState("");
 
   useEffect(() => {
     const shuffled = [
@@ -42,8 +43,10 @@ export default function Questions() {
 
     if (isCorrect) {
       setCorrectAnswersCount((prevCount) => prevCount + 1);
+      setSelectedAnswerMessage("Correct answer");
     } else {
       setIsWrongAnswer(true);
+      setSelectedAnswerMessage("Wrong answer");
     }
 
     const updatedAnsweredQuestions = [
@@ -59,6 +62,7 @@ export default function Questions() {
       setTimeout(() => {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         setIsWrongAnswer(false);
+        setSelectedAnswerMessage("");
       }, 2000);
     }
   };
@@ -89,20 +93,24 @@ export default function Questions() {
           }
 
           return (
-            <button
-              key={index}
-              className={buttonClassName}
-              onClick={() => handleAnswer(answer)}
-              disabled={isAnswered}
-            >
-              {answer}
-              {isSelected && isSelectedAnswerCorrect && (
-                <FaCheck className="check" />
+            <div key={index} className="answer-wrapper">
+              <button
+                className={buttonClassName}
+                onClick={() => handleAnswer(answer)}
+                disabled={isAnswered}
+              >
+                {answer}
+                {isSelected && isSelectedAnswerCorrect && (
+                  <FaCheck className="check" />
+                )}
+                {isSelected && !isSelectedAnswerCorrect && (
+                  <FaTimes className="wrong-answer-icon" />
+                )}
+              </button>
+              {isSelected && (
+                <span className="answer-message">{selectedAnswerMessage}</span>
               )}
-              {isSelected && !isSelectedAnswerCorrect && (
-                <FaTimes className="wrong-answer-icon" />
-              )}
-            </button>
+            </div>
           );
         })}
       </div>

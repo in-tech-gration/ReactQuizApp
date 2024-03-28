@@ -18,7 +18,7 @@
   margin-top: 20px;
 }
 
-.restart:hover {
+.restart-button:hover {
   background-color: rgb(35, 4, 101);
 }
 
@@ -37,6 +37,22 @@
   font-size: 65px;
 }
 
+.star-2 {
+  margin-top: 20px;
+}
+
+.star-2.bottom {
+  margin-bottom: 10px;
+}
+
+.retry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .dog-icon {
   margin-top: 40px;
   animation: bounce 2s infinite;
@@ -53,16 +69,4 @@
   100% {
     transform: translateY(0);
   }
-}
-
-.star-2 {
-  margin-top: 20px;
-}
-
-.retry {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
 }

@@ -65,7 +65,7 @@ export default function Score() {
         </button>
         <FaStar className="star-2" color="gold" size={35} />
         <GiJumpingDog className="dog-icon" size={150} />
-        <FaStar className="star-2" color="gold" size={35} />
+        <FaStar className="star-2 bottom" color="gold" size={35} />
       </div>
     </div>
   );

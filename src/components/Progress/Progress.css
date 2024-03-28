@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: -10px;
   border: 1px solid rgb(206, 198, 198);
   background-color: rgb(215, 207, 207);
   gap: 10px;
