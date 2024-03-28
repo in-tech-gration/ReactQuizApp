@@ -12,7 +12,7 @@ export default function GameMain() {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <>
+    <div className="container-main">
       <Questions key={currentQuestion.id} question={currentQuestion} />
       <Progress />
       <div className="star-thinking-icons">
@@ -27,6 +27,6 @@ export default function GameMain() {
         <FaDotCircle className="circle" color="gold" size={35} />
         <GiThink size={40} />
       </div>
-    </>
+    </div>
   );
 }

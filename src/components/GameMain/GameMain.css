@@ -1,3 +1,7 @@
 .star-thinking-icons {
   margin-top: 90px;
 }
+
+.container-main {
+  min-height: 70vh;
+}
