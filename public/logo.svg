@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 39.35 39.35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ee5454;
+        font-size: 3.1px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        font-family: Rubik-SemiBold, Rubik;
+        font-variation-settings: 'wght' 600;
+        font-weight: 600;
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+        stroke-width: 0px;
+      }
+
+      .cls-8 {
+        fill: #ebf0ff;
+      }
+
+      .cls-2 {
+        font-size: 6.97px;
+      }
+
+      .cls-3 {
+        fill: #26d782;
+        font-size: 5.42px;
+      }
+
+      .cls-12 {
+        font-family: ArialRoundedMTBold, 'Arial Rounded MT Bold';
+      }
+
+      .cls-12, .cls-10, .cls-4, .cls-5 {
+        fill: #306aff;
+      }
+
+      .cls-12, .cls-5 {
+        font-size: 3.11px;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        fill: url(#radial-gradient-2);
+      }
+
+      .cls-4 {
+        font-size: 1.55px;
+      }
+
+      .cls-11 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-6 {
+        font-size: 6.21px;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="-575.32" cy="616.68" fx="-575.32" fy="616.68" r=".02" gradientTransform="translate(86319.16 92522.2) scale(150 -150)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3023ae"/>
+      <stop offset="1" stop-color="#c86dd7"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="-575.37" y1="616.71" x2="-575.33" y2="616.68" gradientTransform="translate(110688.65 61311.43) rotate(-18.01) scale(150 -150)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3023ae"/>
+      <stop offset="1" stop-color="#c86dd7"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient-2" cx="-575.31" cy="616.7" fx="-575.31" fy="616.7" r=".02" gradientTransform="translate(86319.16 92522.2) scale(150 -150)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fad961"/>
+      <stop offset="1" stop-color="#f76b1c"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_7" data-name="Layer 7">
+    <rect class="cls-8" width="39.35" height="39.35" rx="2.99" ry="2.99"/>
+  </g>
+  <g id="Layer_4" data-name="Layer 4">
+    <g>
+      <g>
+        <text class="cls-5" transform="translate(28.83 12.13)"><tspan x="0" y="0">S</tspan></text>
+        <text class="cls-12" transform="translate(26.81 12.13)"><tspan x="0" y="0">J</tspan></text>
+        <text class="cls-6" transform="translate(8.5 13.84)"><tspan class="cls-13" x="0" y="0">R</tspan><tspan x="4.19" y="0">eact</tspan></text>
+      </g>
+      <g>
+        <text class="cls-4" transform="translate(29.04 31.9)"><tspan x="0" y="0">z</tspan></text>
+        <text class="cls-1" transform="translate(27.06 31.55)"><tspan x="0" y="0">z</tspan></text>
+        <text class="cls-3" transform="translate(23.96 30.78)"><tspan x="0" y="0">z</tspan></text>
+        <text class="cls-2" transform="translate(9.47 29.79)"><tspan x="0" y="0">Quiz</tspan></text>
+      </g>
+    </g>
+    <g>
+      <circle class="cls-11" cx="20.26" cy="20.59" r="2.54"/>
+      <path class="cls-7" d="m12.94,17.76l4.59-1.49,1.49,4.59-4.59,1.49-1.49-4.59Z"/>
+      <circle class="cls-9" cx="22.8" cy="17.6" r="2.47"/>
+    </g>
+  </g>
+  <g id="Layer_1" data-name="Layer 1">
+    <path class="cls-10" d="m3.02,9.96c0-3.83,3.11-6.94,6.94-6.94h19.43c3.83,0,6.94,3.11,6.94,6.94v19.43c0,3.83-3.11,6.94-6.94,6.94H9.96c-3.83,0-6.94-3.11-6.94-6.94h0V9.96Zm6.94-4.16c-2.3,0-4.16,1.86-4.16,4.16v19.43c0,2.3,1.86,4.16,4.16,4.16h19.43c2.3,0,4.16-1.86,4.16-4.16h0V9.96c0-2.3-1.86-4.16-4.16-4.16H9.96Z"/>
+  </g>
+</svg>
