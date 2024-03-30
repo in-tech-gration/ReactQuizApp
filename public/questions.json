@@ -3,60 +3,92 @@
     "id": 1,
     "question": "What is the best way to share state among Components?",
     "correctAnswer": "Context API",
-    "incorrectAnswer": "useEffect"
+    "incorrectAnswers": ["useEffect", "Redux", "Prop drilling"]
   },
   {
     "id": 2,
     "question": "Which variable will retain its value upon re-render?",
     "correctAnswer": "A Ref",
-    "incorrectAnswer": "Local variable using const"
+    "incorrectAnswers": [
+      "Local variable using const",
+      "State variable",
+      "Global variable"
+    ]
   },
   {
     "id": 3,
     "question": "How many arguments does useEffect accept?",
     "correctAnswer": "2",
-    "incorrectAnswer": "1"
+    "incorrectAnswers": ["1", "3", "4"]
   },
   {
     "id": 4,
     "question": "What is the purpose of React's virtual DOM?",
     "correctAnswer": "Improve performance by minimizing DOM manipulation",
-    "incorrectAnswer": "It has no purpose, it's just a concept"
+    "incorrectAnswers": [
+      "It has no purpose, it's just a concept",
+      "To make React components look cooler",
+      "To confuse developers"
+    ]
   },
   {
     "id": 5,
     "question": "What is JSX in React?",
     "correctAnswer": "A syntax extension for JavaScript",
-    "incorrectAnswer": "A type of state management library"
+    "incorrectAnswers": [
+      "A type of state management library",
+      "A server-side rendering technique",
+      "A build tool for React applications"
+    ]
   },
   {
     "id": 6,
     "question": "What is the purpose of the React `useState` hook?",
     "correctAnswer": "To add state to functional components",
-    "incorrectAnswer": "To fetch data from an API"
+    "incorrectAnswers": [
+      "To fetch data from an API",
+      "To create class components",
+      "To handle routing in React applications"
+    ]
   },
   {
     "id": 7,
     "question": "What is the purpose of React's `useContext` hook?",
     "correctAnswer": "To consume context values in functional components",
-    "incorrectAnswer": "To create context providers in functional components"
+    "incorrectAnswers": [
+      "To create context providers in functional components",
+      "To manage global state in React applications",
+      "To define props in functional components"
+    ]
   },
   {
     "id": 8,
     "question": "What is the purpose of React Router?",
     "correctAnswer": "To enable routing and navigation in React applications",
-    "incorrectAnswer": "To manage state in React components"
+    "incorrectAnswers": [
+      "To manage state in React components",
+      "To style React components",
+      "To fetch data from a server"
+    ]
   },
   {
     "id": 9,
     "question": "What is the purpose of the `useEffect` hook in React?",
     "correctAnswer": "To perform side effects in functional components",
-    "incorrectAnswer": "To handle component rendering in class components"
+    "incorrectAnswers": [
+      "To handle component rendering in class components",
+      "To manage state in functional components",
+      "To create custom hooks"
+    ]
   },
   {
     "id": 10,
     "question": "What is the purpose of React's `setState` method?",
     "correctAnswer": "To update the state of a component",
-    "incorrectAnswer": "To define initial state in a component"
+    "incorrectAnswers": [
+      "To define initial state in a component",
+      "To delete a component",
+      "To handle component lifecycle events"
+    ]
   }
 ]
