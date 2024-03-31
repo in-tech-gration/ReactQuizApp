@@ -13,6 +13,7 @@ export default function QuizContainer() {
   const [error, setError] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
+  // Fetch questions data from the server on component mount
   useEffect(() => {
     async function fetchQuestions() {
       setLoading(true);
@@ -40,12 +41,14 @@ export default function QuizContainer() {
     fetchQuestions();
   }, []);
 
+  // Function to update the questions state
   const handleSetQuestions = (updatedQuestions) => {
     setQuestions(updatedQuestions);
   };
 
   const totalQuestions = questions.length;
 
+  // Handle different scenarios based on loading state, error, and whether all questions are answered
   if (
     !totalQuestions ||
     currentQuestionIndex < 0 ||
@@ -80,8 +83,7 @@ export default function QuizContainer() {
           setQuestions: handleSetQuestions,
         }}
       >
-        {!allQuestionsAnswered && <GameMain />}
-        {allQuestionsAnswered && <Score />}
+        {!allQuestionsAnswered ? <GameMain /> : <Score />}
       </QuizContainerContext.Provider>
     </main>
   );

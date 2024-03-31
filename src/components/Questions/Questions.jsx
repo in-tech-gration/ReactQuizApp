@@ -29,15 +29,14 @@ export default function Questions() {
     setShuffledAnswers(shuffled);
   }, [currentQuestion.correctAnswer, currentQuestion.incorrectAnswers]);
 
+  // Function to handle user's answer selection
   const handleAnswer = (selectedAnswer) => {
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-
-    const updatedQuestions = questions.map((question, index) => {
-      if (index === currentQuestionIndex) {
-        return { ...question, selectedAnswer };
-      }
-      return question;
-    });
+    const updatedQuestions = questions.map((question, index) =>
+      index === currentQuestionIndex
+        ? { ...question, selectedAnswer }
+        : question
+    );
     setQuestions(updatedQuestions);
 
     if (isCorrect) {
@@ -46,6 +45,7 @@ export default function Questions() {
       setIsWrongAnswer(true);
     }
 
+    // Update the list of answered questions
     const updatedAnsweredQuestions = [
       ...answeredQuestions,
       currentQuestionIndex,
@@ -55,6 +55,7 @@ export default function Questions() {
     const allQuestionsAnswered =
       updatedAnsweredQuestions.length === questions.length;
 
+    // If not all questions have been answered, move to the next question after a delay
     if (!allQuestionsAnswered) {
       setTimeout(() => {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -80,6 +81,7 @@ export default function Questions() {
                     answer === currentQuestion.correctAnswer;
                   const isSelected = currentQuestion.selectedAnswer === answer;
                   let buttonClassName = "answer-button";
+
                   if (isAnswered) {
                     if (isSelected) {
                       buttonClassName += isSelectedAnswerCorrect
@@ -89,9 +91,11 @@ export default function Questions() {
                       buttonClassName += " correct";
                     }
                   }
+
                   if (isSelected && !isSelectedAnswerCorrect && isWrongAnswer) {
                     buttonClassName += " wrong-answer-animation";
                   }
+
                   return (
                     <div key={answerIndex} className="answer-wrapper">
                       <button

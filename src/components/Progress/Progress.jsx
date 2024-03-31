@@ -12,6 +12,7 @@ export default function Progress() {
     currentQuestionIndex,
   } = useContext(QuizContainerContext);
 
+  // Function to determine background color for each progress item
   const getBackgroundColor = (index) => {
     const isAnswered = answeredQuestions.includes(index);
     const currentQuestion = questions[index];
@@ -20,8 +21,6 @@ export default function Progress() {
       case index === currentQuestionIndex && !isAnswered:
         return "gray";
       case !isAnswered:
-        return "light-gray";
-      case currentQuestion.selectedAnswer === null:
         return "light-gray";
       case currentQuestion.correctAnswer === currentQuestion.selectedAnswer:
         return "green";

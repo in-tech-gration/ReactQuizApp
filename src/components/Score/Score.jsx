@@ -47,6 +47,7 @@ export default function Score() {
     );
   }
 
+  // Function to reset quiz state
   const resetQuiz = () => {
     setCorrectAnswersCount(0);
     setCurrentQuestionIndex(0);
