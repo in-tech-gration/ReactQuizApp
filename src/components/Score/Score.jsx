@@ -1,58 +1,17 @@
 import { QuizContainerContext } from "../../QuizContainerContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import "./Score.css";
 import { GiJumpingDog } from "react-icons/gi";
 import { FaStar } from "react-icons/fa";
 
 export default function Score() {
-  const {
-    questions,
-    correctAnswersCount,
-    setCorrectAnswersCount,
-    setCurrentQuestionIndex,
-    setAnsweredQuestions,
-    setQuestions,
-  } = useContext(QuizContainerContext);
+  const { questions, correctAnswersCount, resetQuiz } =
+    useContext(QuizContainerContext);
 
-  const [error, setError] = useState(null);
   const totalQuestions = questions.length;
 
-  useEffect(() => {
-    async function fetchQuestions() {
-      try {
-        const response = await fetch("/questions.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch questions");
-        }
-        const data = await response.json();
-        setQuestions(data);
-      } catch (error) {
-        console.log("Error:", error);
-        if (error instanceof SyntaxError) {
-          setError(
-            "Error parsing JSON data. Please check the format of the JSON file."
-          );
-        } else {
-          setError(`Failed to fetch questions: ${error.message}`);
-        }
-      }
-    }
-
-    fetchQuestions();
-  }, [setQuestions]);
-
-  if (error) {
-    return (
-      <p style={{ color: "red" }}>{`Something went wrong ${error.message} `}</p>
-    );
-  }
-
-  // Function to reset quiz state
-  const resetQuiz = () => {
-    setCorrectAnswersCount(0);
-    setCurrentQuestionIndex(0);
-    setAnsweredQuestions([]);
-    setQuestions([]);
+  const handleResetQuiz = () => {
+    resetQuiz();
   };
 
   return (
@@ -63,7 +22,7 @@ export default function Score() {
       </h1>
       <div className="retry">
         <h2 className="restart-question">Do you wish to play again?</h2>
-        <button className="restart-button" onClick={resetQuiz}>
+        <button className="restart-button" onClick={handleResetQuiz}>
           Restart Quiz
         </button>
         <FaStar className="star-2" color="gold" size={35} />

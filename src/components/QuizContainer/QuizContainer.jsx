@@ -46,7 +46,19 @@ export default function QuizContainer() {
     setQuestions(updatedQuestions);
   };
 
+  const resetQuiz = () => {
+    setCorrectAnswersCount(0);
+    setCurrentQuestionIndex(0);
+    setAnsweredQuestions([]);
+    const updatedQuestions = questions.map((question) => ({
+      ...question,
+      selectedAnswer: null,
+    }));
+    setQuestions(updatedQuestions);
+  };
+
   const totalQuestions = questions.length;
+  const allQuestionsAnswered = answeredQuestions.length === totalQuestions;
 
   // Handle different scenarios based on loading state, error, and whether all questions are answered
   if (
@@ -67,8 +79,6 @@ export default function QuizContainer() {
     );
   }
 
-  const allQuestionsAnswered = answeredQuestions.length === totalQuestions;
-
   return (
     <main className="container">
       <QuizContainerContext.Provider
@@ -81,6 +91,7 @@ export default function QuizContainer() {
           correctAnswersCount,
           setCorrectAnswersCount,
           setQuestions: handleSetQuestions,
+          resetQuiz: resetQuiz,
         }}
       >
         {!allQuestionsAnswered ? <GameMain /> : <Score />}

@@ -64,6 +64,11 @@ export default function Questions() {
     }
   };
 
+  // Reset isWrongAnswer when the quiz is restarted
+  useEffect(() => {
+    setIsWrongAnswer(false);
+  }, [answeredQuestions, currentQuestionIndex]);
+
   return (
     <div className="questions-container">
       <h1 className="question-text">{currentQuestion.question}</h1>
