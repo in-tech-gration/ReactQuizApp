@@ -27,6 +27,8 @@
   margin-bottom: 20px;
   margin-top: 40px;
   color: rgb(35, 4, 101);
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
 }
 
 .correct-count {
@@ -43,7 +45,7 @@
 }
 
 .star-2.bottom {
-  margin-bottom: 10px;
+  margin-bottom: 35px;
 }
 
 .retry {
@@ -75,5 +77,11 @@
 @media screen and (max-width: 600px) {
   .score {
     font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .restart-question {
+    font-size: 16px;
   }
 }

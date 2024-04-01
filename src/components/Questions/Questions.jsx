@@ -66,7 +66,7 @@ export default function Questions() {
 
   // Reset isWrongAnswer when the quiz is restarted
   useEffect(() => {
-    setIsWrongAnswer(false);
+    setIsWrongAnswer(true);
   }, [answeredQuestions, currentQuestionIndex]);
 
   return (
