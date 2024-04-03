@@ -60,7 +60,7 @@ export default function Questions() {
       setTimeout(() => {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         setIsWrongAnswer(false);
-      }, 2000);
+      }, 3000);
     }
   };
 
@@ -73,61 +73,53 @@ export default function Questions() {
     <div className="questions-container">
       <h1 className="question-text">{currentQuestion.question}</h1>
       <div className="answers-container">
-        {[...Array(Math.ceil(shuffledAnswers.length / 2))].map(
-          (_, rowIndex) => (
-            <div key={rowIndex} className="answer-row">
-              {shuffledAnswers
-                .slice(rowIndex * 2, rowIndex * 2 + 2)
-                .map((answer, index) => {
-                  const answerIndex = rowIndex * 2 + index;
-                  const isAnswered =
-                    answeredQuestions.includes(currentQuestionIndex);
-                  const isSelectedAnswerCorrect =
-                    answer === currentQuestion.correctAnswer;
-                  const isSelected = currentQuestion.selectedAnswer === answer;
-                  let buttonClassName = "answer-button";
+        <div className="answer-row">
+          {shuffledAnswers.map((answer, index) => {
+            const isAnswered = answeredQuestions.includes(currentQuestionIndex);
+            const isSelectedAnswerCorrect =
+              answer === currentQuestion.correctAnswer;
+            const isSelected = currentQuestion.selectedAnswer === answer;
+            let buttonClassName = "answer-button";
 
-                  if (isAnswered) {
-                    if (isSelected) {
-                      buttonClassName += isSelectedAnswerCorrect
-                        ? " correct"
-                        : " incorrect";
-                    } else if (answer === currentQuestion.correctAnswer) {
-                      buttonClassName += " correct";
-                    }
-                  }
+            if (isAnswered) {
+              if (isSelected) {
+                buttonClassName += isSelectedAnswerCorrect
+                  ? " correct"
+                  : " incorrect";
+              } else if (answer === currentQuestion.correctAnswer) {
+                buttonClassName += " correct";
+              }
+            }
 
-                  if (isSelected && !isSelectedAnswerCorrect && isWrongAnswer) {
-                    buttonClassName += " wrong-answer-animation";
-                  }
+            if (isSelected && !isSelectedAnswerCorrect && isWrongAnswer) {
+              buttonClassName += " wrong-answer-animation";
+            }
 
-                  return (
-                    <div key={answerIndex} className="answer-wrapper">
-                      <button
-                        className={buttonClassName}
-                        onClick={() => handleAnswer(answer)}
-                        disabled={isAnswered}
-                      >
-                        {answer}
-                        {isSelected && isSelectedAnswerCorrect && (
-                          <FaCheck className="check" />
-                        )}
-                        {isSelected && !isSelectedAnswerCorrect && (
-                          <FaTimes className="wrong-answer-icon" />
-                        )}
-                      </button>
-                      {isAnswered && isSelectedAnswerCorrect && (
-                        <span className="answer-message">Correct answer</span>
-                      )}
-                      {isAnswered && !isSelectedAnswerCorrect && isSelected && (
-                        <span className="answer-message">Wrong answer</span>
-                      )}
-                    </div>
-                  );
-                })}
-            </div>
-          )
-        )}
+            return (
+              <div key={index} className="answer-wrapper">
+                <button
+                  className={buttonClassName}
+                  onClick={() => handleAnswer(answer)}
+                  disabled={isAnswered}
+                >
+                  {answer}
+                  {isSelected && isSelectedAnswerCorrect && (
+                    <FaCheck className="check" />
+                  )}
+                  {isSelected && !isSelectedAnswerCorrect && (
+                    <FaTimes className="wrong-answer-icon" />
+                  )}
+                </button>
+                {isAnswered && isSelectedAnswerCorrect && (
+                  <span className="answer-message">Correct answer</span>
+                )}
+                {isAnswered && !isSelectedAnswerCorrect && isSelected && (
+                  <span className="answer-message">Wrong answer</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
