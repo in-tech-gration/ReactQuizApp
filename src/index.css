@@ -71,14 +71,20 @@ button:focus-visible {
   }
 } */
 body {
-  background-color: rgb(237, 237, 255);
+  background-color: #fdfdfc;
 }
 
 @media screen and (max-width: 300px) {
-  body {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+  .question-text {
+    margin-top: 310px;
+  }
+  .star {
+    display: none;
+  }
+
+  .progress-number {
+    width: 10px;
+    margin-right: 5px;
   }
 }
 
@@ -100,8 +106,8 @@ body {
   background-color: #000000;
   color: #ffffff;
 
-  .dog-icon {
-    color: #ffffff;
+  .unicorn-dancing {
+    color: black;
   }
 
   .restart-question {

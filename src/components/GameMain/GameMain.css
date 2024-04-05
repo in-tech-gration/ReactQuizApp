@@ -4,21 +4,13 @@
   align-items: center;
 }
 
-.star-thinking-icons .circle {
-  margin-right: 10px;
-}
-
 .container-main {
   min-height: 70vh;
 }
 
-@media screen and (max-width: 600px) {
-  .star-thinking-icons {
-    margin-top: 20px;
-  }
-
-  .star-thinking-icons .circle,
-  .star-thinking-icons .think {
-    font-size: 20px;
-  }
+.unicorn-pc {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
 }

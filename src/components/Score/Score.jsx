@@ -1,7 +1,7 @@
 import { QuizContainerContext } from "../../QuizContainerContext";
 import { useContext } from "react";
 import "./Score.css";
-import { GiJumpingDog } from "react-icons/gi";
+// import { GiJumpingDog } from "react-icons/gi";
 import { FaStar } from "react-icons/fa";
 
 export default function Score() {
@@ -26,7 +26,8 @@ export default function Score() {
           Restart Quiz
         </button>
         <FaStar className="star-2" color="gold" size={35} />
-        <GiJumpingDog className="dog-icon" size={150} />
+        {/* <GiJumpingDog className="dog-icon" size={150} /> */}
+        <img src="./Unicorn2-dance.jpg" className="unicorns-dancing" />
         <FaStar className="star-2 bottom" color="gold" size={35} />
       </div>
     </div>

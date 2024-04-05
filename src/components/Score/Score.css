@@ -56,10 +56,12 @@
   margin-top: 20px;
 }
 
-.dog-icon {
+.unicorns-dancing {
   margin-top: 40px;
   animation: bounce 2s infinite;
   color: rgb(35, 4, 101);
+  border-radius: 10px;
+  width: 280px;
 }
 
 @keyframes bounce {
