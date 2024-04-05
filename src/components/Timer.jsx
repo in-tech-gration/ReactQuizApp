@@ -1,6 +1,6 @@
 export default function Timer(props) {
   return (
-    <section id="timer-section" className="flex flex-row">
+    <section id="timer-section" className="flex flex-column">
       <svg
         width="44"
         height="44"

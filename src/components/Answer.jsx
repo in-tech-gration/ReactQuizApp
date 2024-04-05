@@ -1,59 +1,41 @@
-import { useState, useEffect } from "react";
-import { CircleSvg, DotSvg, CheckMarkSvg, XMarkSvg } from "./SvgComponents/";
+import { CircleSvg, DotSvg, CheckMarkSvg, XMarkSvg } from "./SvgComponents";
 
+export default function Answer({
+  id,
+  answer,
+  answerIndex,
+  onClickHandler,
+  children,
+  selected,
+  answerClassName,
+  answerEffectClassName,
+}) {
+  const section_id = id.replace("answer", "");
 
-export default function Answer(props) {
-  const [correctStatus, setCorrectStatus] = useState(undefined);
-  const [checkmarkClassName, setCheckmarkClassName] = useState("");
-  const [answerClassName, setAnswerClassName] = useState("");
-
-  const handleEvent = () => {
-    const isCorrect = props.answer === props.correctAnswer;
-    setCorrectStatus(isCorrect);
-    props.chooseAnswer(isCorrect);
-  };
-  
-  useEffect(() => {
-
-    if (correctStatus === true) {
-      setAnswerClassName("correct");
-      setCheckmarkClassName("animate__animated animate__heartBeat");
-    } else if (correctStatus === false) {
-      setAnswerClassName("false");
-      setCheckmarkClassName("animate__animated animate__shakeX");
-    } else if (correctStatus === undefined) {
-      setCheckmarkClassName("");
-      setAnswerClassName("");
-    }
-
-    if (correctStatus !== undefined) {
-      const timeout = setTimeout(() => {
-        setCorrectStatus(undefined);
-      }, 1200);
-      return () => clearTimeout(timeout);
-    }
-
-
-  }, [correctStatus]);
-
-
-
+  const answerEffectSvg =
+    answerClassName === "correct" ? <CheckMarkSvg /> : <XMarkSvg />;
+  const selectedClass = selected ? "selected" : "";
   return (
-    <section className="flex flex-row">
+    <section
+      key={answerIndex}
+      id={section_id}
+      data-selected={selectedClass}
+      className="flex flex-row"
+    >
       <button
         onClick={(event) => {
           event.preventDefault();
-          handleEvent();
+          onClickHandler(answer, answerIndex);
         }}
-        className={`answer row ${answerClassName}`}
+        className={`answer row ${selectedClass} ${answerClassName}`}
       >
         <CircleSvg />
         <DotSvg />
-        <p id={props.children} className="answertitle">
-          {props.children}
+        <p id={children} className="answertitle">
+          {children}
         </p>
-        <p className={`checkmark ${checkmarkClassName}`}>
-          {correctStatus ? <CheckMarkSvg /> : <XMarkSvg />}
+        <p className={`answerEffectElement ${answerEffectClassName}`}>
+          {answerEffectSvg}
         </p>
       </button>
     </section>

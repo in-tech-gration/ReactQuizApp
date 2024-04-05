@@ -1,7 +1,7 @@
 export default function QuizResults(props) {
   const success = props.correctAnswers === props.questions.length;
   const fail = props.correctAnswers !== props.questions.length;
-  console.log(props.showText);
+
   return (
     <section id="quiz-results" className="flex flex-row">
       <div className="resultsdiv">

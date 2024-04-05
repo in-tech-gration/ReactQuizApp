@@ -21,7 +21,7 @@ export default function QuestionsCounter(props) {
   }, [props.currentQuestion]);
 
   return (
-    <section className="flex flex-row">
+    <section className="flex flex-column">
       <h3 className="questions-counter">
         Question{" "}
         <span className={`current-question-index ${questionClassName}`}>

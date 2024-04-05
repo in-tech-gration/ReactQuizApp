@@ -1,31 +1,37 @@
-export default function Paging(props) {
-  const firstLetterofString = (string) => string[0]; 
-  const StringWithoutFirstLetter = (string) => string.slice(1);
-  const correctStatusText = props.correctStatus
-    ? "Correct"
-    : props.correctStatus === false
-    ? "Wrong"
-    : "";
-  const correctStatusClassBox = props.correctStatus
-    ? "correctStatusClassBox correct-box"
-    : props.correctStatus === false
-    ? "correctStatusClassBox false-box"
-    : "";
+import { useState, useEffect } from "react";
 
-  const correctStatusClassText = props.correctStatus
-    ? "correct-text"
-    : props.correctStatus === false
-    ? "false-text"
-    : "";
+export default function Paging(props) {
+
+  const firstLetterofString = (string) => string[0];
+  const StringWithoutFirstLetter = (string) => string.slice(1);
+  const answerText =
+  props.currentAnswerClassName === "correct"
+      ? "Correct"
+      :  props.currentAnswerClassName === "incorrect"
+      ? "Wrong"
+      : "";
+  const answerTextBox =
+  props.currentAnswerClassName === "correct"
+      ? "answer-text-box correct-box"
+      :  props.currentAnswerClassName === "incorrect"
+      ? "answer-text-box incorrect-box"
+      : "";
+
+  const answerTextClass =
+  props.currentAnswerClassName === "correct"
+      ? "correct-text"
+      :  props.currentAnswerClassName === "incorrect"
+      ? "incorrect-text"
+      : "";
 
   return (
-    <section id="quiz-progress" className="flex flex-row">
-      <div className="correctStatusClassContainer">
-        <div className={`flex flex-row ${correctStatusClassBox}`}>{firstLetterofString(correctStatusText)}</div>
-        <span className={`flex flex-row ${correctStatusClassText}`}>
-          {StringWithoutFirstLetter(correctStatusText)}
+      <div className="answer-text-container">
+        <div className={`flex flex-row ${answerTextBox}`}>
+          {firstLetterofString(answerText)}
+        </div>
+        <span className={`flex flex-row ${answerTextClass}`}>
+          {StringWithoutFirstLetter(answerText)}
         </span>
       </div>
-    </section>
   );
 }

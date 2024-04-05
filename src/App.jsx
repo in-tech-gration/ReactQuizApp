@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Header from './components/Header'
 import QuestionsContainer from "./components/QuestionsContainer";
 import Answers from "./components/Answers";
+import QuizHeader from "./components/QuizHeader";
+
 // import {
 //   CircleSvg,
 //   DotSvg,
@@ -17,73 +18,45 @@ import Paging from "./components/Paging";
 import "./App.css";
 import "./animate.css";
 import QuizResults from "./components/QuizResults";
+import questions from "./components/questions";
+import ScoreIndicatorBoard from "./components/ScoreIndicatorBoard";
 
-function App() {
+function App(props) {
   const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+  const [questionsList, setQuestionsList] = useState([...questions]);
   const [showResult, setShowResult] = useState(false);
   const [showText, setShowText] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showSlider, setShowSlider] = useState("");
-  const [correctStatus, setCorrectStatus] = useState(undefined); 
+  const [correctState, setCorrectState] = useState(undefined);
+  const [isSelectedAnswer, setIsSelectedAnswer] = useState(undefined);
+  const [answerClassName, setAnswerClassName] = useState(undefined);
+  const [pagingTextState, setPagingTextState] = useState("");
+  const [currentAnswerClassName, setCurrentAnswerClassName] = useState("");
 
-  const questions = [
-    {
-      question:
-        "What is the correct command to create a new React Vite project?",
-      answers: ["npm create vite@latest", "npm install vite@latest"],
-      correctAnswer: "npm create vite@latest",
-    },
-    {
-      question:
-        "What does ReactApp refer to in the following command? npx create-react-app ReactApp",
-      answers: [
-        "The name of the new React app we want to create",
-        "The directory to create the new app in",
-      ],
-      correctAnswer: "The directory to create the new app in",
-    },
-    {
-      question:
-        "What command is used to start the React local development server?",
-      answers: ["npm start", "npm run dev"],
-      correctAnswer: "npm run dev",
-    },
-  ];
+  const correctAnswersCounter = () => {
+    //setCorrectAnswers(prevCorrectAnswers => prevCorrectAnswers + 1);
+    setCorrectAnswers(correctAnswers + 1);
+  };
+
+  const incorrectAnswersCounter = () => {
+    setIncorrectAnswers(incorrectAnswers + 1);
+  };
 
   useEffect(() => {
-    setCorrectStatus("");
+    setCorrectState([]);
     if (showSlider === "slide-right") {
-      const timeout = setTimeout(() => {
+      const slidertimeout = setTimeout(() => {
         setShowSlider("");
       }, 1200);
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(slidertimeout);
     }
   }, [showSlider]);
 
-
-  const chooseAnswer = (isCorrect) => {
-    if (isCorrect) {
-      setCorrectStatus(true);
-      setCorrectAnswers(correctAnswers + 1);
-    }
-    else{
-      setCorrectStatus(false);
-    }
-    setTimeout(() => {
-      const nextQuestion = currentQuestion + 1;
-      if (nextQuestion < questions.length) {
-        setCurrentQuestion(nextQuestion);
-        setShowSlider("slide-right");
-      } else {
-        setShowResult(true);
-        setShowText(true);
-      }
-    }, 1200);
-  };
-
   return (
     <div className="app-container">
-      <Header />
+      <QuizHeader category={props.category}/>
       {showResult ? (
         <QuizResults
           showText={showText}
@@ -91,23 +64,41 @@ function App() {
           questions={questions}
         />
       ) : (
-        <main className={`flex flex-column ${showSlider}`}>
-          <QuestionsContainer
-            currentQuestion={currentQuestion}
+        <>
+          <ScoreIndicatorBoard
+            correctAnswers={correctAnswers}
+            incorrectAnswers={incorrectAnswers}
             questions={questions}
           />
-          <Question
-            questions={questions}
-            currentQuestion={currentQuestion}
-            question={questions[currentQuestion].question}
-          />
-          <Answers
-            correctAnswer={questions[currentQuestion].correctAnswer}
-            answers={questions[currentQuestion].answers}
-            chooseAnswer={chooseAnswer} 
-          />
-          <Paging correctStatus={correctStatus} />
-        </main>
+          <main className={`flex flex-column ${showSlider}`}>
+            <QuestionsContainer
+              currentQuestion={currentQuestion}
+              questions={questions}
+            />
+            <Question
+              questions={questions}
+              currentQuestion={currentQuestion}
+              question={questions[currentQuestion].question}
+              codeblock={questions[currentQuestion].code}
+              language="javascript"
+            />
+
+            <Answers
+              question={questions[currentQuestion]}
+              questions={questionsList}
+              setShowSlider={setShowSlider}
+              setShowResult={setShowResult}
+              setShowText={setShowText}
+              correctState={correctState}
+              correctAnswer={questions[currentQuestion].correctAnswer}
+              currentQuestion={currentQuestion}
+              setCurrentQuestion={setCurrentQuestion}
+              answerClassName={answerClassName}
+              correctAnswersCounter={correctAnswersCounter}
+              incorrectAnswersCounter={incorrectAnswersCounter}
+            />
+          </main>
+        </>
       )}
     </div>
   );

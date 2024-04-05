@@ -1,0 +1,27 @@
+header.categoryheader {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header.categoryheader svg {
+  display: flex;
+  width: 10%;
+  height: 100%;
+  max-height: 80px;
+  align-items: flex-end;
+  justify-items: center;
+}
+
+.categorylogo {
+  align-items: center;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+
+@media (max-width: 650px) {
+
+}
