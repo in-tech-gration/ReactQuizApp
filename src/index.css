@@ -28,7 +28,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 220px;
   min-height: 100vh;
   padding: 0;
   margin: 0;
@@ -186,6 +186,17 @@ main {
   margin-bottom: 15px;
 }
 
+.question-code {
+  flex-wrap: wrap;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+  height: auto;
+}
+
 .orange-color {
   color: #f79542;
 }
@@ -211,8 +222,14 @@ main {
 }
 
 .resultsdiv h4 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0 auto;
+}
+
+.resultsdiv h4 div {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
 }
 
 .answer {
@@ -242,7 +259,7 @@ main {
 
 .answer p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: calc(1vw + 10px);
   line-height: 1.5;
 }
 
@@ -263,13 +280,21 @@ main {
 
 #answers-section {
   align-items: center;
-  padding: 1rem 2rem;
+  /* padding: 1rem 2rem; */
+  padding: 1rem 4rem;
+}
+
+#answers-section div {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 #answers-section div section {
   width: 100%;
   max-width: max-content;
   min-width: min-content;
+  aspect-ratio: 1/1;
 }
 
 .answer-text-container {
@@ -314,12 +339,15 @@ button.answer {
   font-size: 1.125rem;
   font-weight: 500;
   display: grid;
+  /* grid-template-rows: 1fr;
+  grid-template-columns: 1fr 3fr 1fr; */
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 0fr 1fr 0fr;
   align-items: center;
   justify-items: center;
   width: 100%;
   min-width: min-content;
+  max-width: min-content;
   gap: 1rem;
   border-radius: 0.75rem;
   border: 0;
@@ -333,7 +361,6 @@ button.answer:hover {
 
 button.answer:focus,
 button.answer:focus-visible {
-  /* outline: 4px auto -webkit-focus-ring-color; */
   outline: none;
 }
 
@@ -527,7 +554,7 @@ button.answer.incorrect .answerEffectElement {
 }
 
 .start-menu > #main-menu-choises > button.answer {
-  height: 10rem;
+  height: calc(7vh + 2vw);
   width: 10rem;
   justify-content: center;
   display: flex;
@@ -543,6 +570,50 @@ h2 {
   font-weight: 500;
 }
 
+#timer-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+#timer-section span {
+  font-weight: bold;
+}
+.labelScoreContainer .number {
+  display: none;
+  margin-left: 5px;
+}
+
+#timer-section .main-menu-button.answer.hard.selected {
+  color: #ebf0ff;
+  background: linear-gradient(to right, rgb(255, 3, 88), rgb(255 95 149));
+  text-shadow: 3px 3px 2px rgba(29, 0, 0, 1);
+}
+
+#timer-section .main-menu-button.answer.easy.selected {
+  color: #ebf0ff;
+  background: linear-gradient(to right, rgb(30, 226, 38), rgb(76, 175, 80));
+  text-shadow: 3px 3px 2px rgba(29, 0, 0, 1);
+}
+
+#timer-section .main-menu-button.answer.medium.selected {
+  color: #ebf0ff;
+  background: linear-gradient(to right, rgb(207, 233, 11), rgb(195, 189, 17));
+  text-shadow: 3px 3px 2px rgba(29, 0, 0, 1);
+}
+
+.questions-counter-text {
+  border-left: 5px solid #356cfc;
+  padding: 5px;
+  border-right: 5px dashed #f68137;
+  border-top: 5px dotted #7948c0;
+  border-bottom: 5px outset #38d889;
+}
+
 /* Keyframe animation */
 @keyframes slide-right {
   from {
@@ -556,13 +627,32 @@ h2 {
 }
 
 @media (max-width: 650px) {
+  button.answer {
+    margin: 0.2rem;
+  }
+  header svg {
+    flex: none;
+    height: 7vh;
+  }
   #main-menu-choises {
-    flex-direction: column;
-    width: 70%;
+    flex-direction: row;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 15px 25px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
   }
   .start-menu > #main-menu-choises > button.answer {
     height: 7rem;
+    width: 7rem;
+    font-size: 1rem;
+    max-width: 7rem;
+    aspect-ratio: 1 / 1;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 0;
   }
   main.flex-row {
     flex-direction: column;
@@ -574,6 +664,13 @@ h2 {
   pre {
     font-size: 85%;
   }
+  #answers-section div section {
+    aspect-ratio: auto;
+  }
+
+  .resultsdiv h4 {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -581,6 +678,7 @@ h2 {
     padding: 2.5rem 4rem;
   }
   button.answer p {
-    font-size: 1.75rem;
+    /* font-size: 1.75rem; */
+    font-size: calc(1vh + 10px);
   }
 }

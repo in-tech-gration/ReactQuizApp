@@ -17,11 +17,9 @@ export default function Question(props) {
     <section id="question-text-wrapper" className="flex flex-column">
       <p className="question-text">{questionblock}</p>
       {codeblock && (
-        <pre className="question-code">
-          <code className={`language-${props.language}`} ref={codeRef}>
-            {codeblock.replace(/\s/g, '')}
+          <code className={`language-${props.language} question-code`} ref={codeRef}>
+            {codeblock}
           </code>
-        </pre>
       )}
     </section>
   );

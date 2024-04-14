@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import Answer from "./Answer";
-import questions from "./questions";
 import Paging from "./Paging";
+import { nanoid } from "nanoid";
 
 export default function Answers(props) {
   const [correctState, setCorrectState] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(undefined);
   const [currentAnswerClassName, setCurrentAnswerClassName] = useState("");
 
+  const divKey = nanoid();
+  const answersExist = props.question && props.question.answers;
   useEffect(() => {
     setCorrectState([]);
     setCurrentAnswerClassName(currentAnswerClassName);
@@ -60,7 +62,7 @@ export default function Answers(props) {
 
     const nextQuestiontimeout = setTimeout(() => {
       const nextQuestion = props.currentQuestion + 1;
-      if (nextQuestion < questions.length) {
+      if (nextQuestion < props.questions.length) {
         setCurrentAnswerClassName("");
         props.setCurrentQuestion(nextQuestion);
         props.setShowSlider("slide-right");
@@ -73,14 +75,14 @@ export default function Answers(props) {
     // Cleanup the timeout to prevent memory leaks
     return () => clearTimeout(nextQuestiontimeout);
   };
-
   return (
     <>
       <section id="quiz-progress" className="flex flex-row">
         <Paging currentAnswerClassName={currentAnswerClassName} />
       </section>
       <section id="answers-section" className="flex flex-row">
-        {props.question.answers.map((answer, answerIndex) => {
+        <div key={divKey} className="flex flex-row">
+        { answersExist && props.question.answers.map((answer, answerIndex) => {
           const isSelected = selectedAnswer === answer;
           const answerClassName =
             correctState && correctState[answerIndex]
@@ -98,8 +100,9 @@ export default function Answers(props) {
             return "";
           };
           return (
-            <div key={answerIndex} className="flex flex-row">
+            <div key={`answer${answerIndex}`} className="flex flex-row">
               <Answer
+                key={`answer${answerIndex}`}
                 id={`answer${answerIndex}`}
                 selected={isSelected}
                 answerClassName={answerClassName}
@@ -112,9 +115,11 @@ export default function Answers(props) {
               >
                 {answer}
               </Answer>
-            </div>
+              </div>
           );
-        })}
+        }
+        )}
+        </div>
       </section>
     </>
   );

@@ -3,10 +3,10 @@ import CategoryLogo from "./CategoryLogo";
 import MainMenuButton from "./MainMenuButton";
 import classes from "./QuizHeader.module.css";
 
-export default function QuizHeader({ category }) {
+export default function QuizHeader({ category, showApp, setShowApp , chooseHome}) {
   return (
     <header className={`flex flex-row ${classes.categoryheader}`}>
-      <MainMenuButton />
+      <MainMenuButton name="Home" showApp={showApp} setShowApp={setShowApp} chooseHome={chooseHome}/>
       <CategoryLogo category={category} />
       <Logo />
     </header>

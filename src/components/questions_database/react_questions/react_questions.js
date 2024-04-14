@@ -1,8 +1,9 @@
-const questions = [
+const react_questions = [
   {
     question: `What should the console read when the following code is run?`,
     code: `
-    const [, , animal] = ['Horse', 'Mouse', 'Cat'];
+    const [, , animal] = ['Horse', 'Mouse', 'Cat'];                              
+    
     console.log(animal); 
   `,
     answers: ["Horse", "Cat", "Mouse", "undefined"],
@@ -976,4 +977,4 @@ const additionalQuestions = [
   },
 ];
 
-export default questions;
+export default react_questions;

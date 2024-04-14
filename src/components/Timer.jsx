@@ -1,26 +1,160 @@
-export default function Timer(props) {
+import { useState, useRef, useEffect } from "react";
+import { ProgressBar } from "react-progressbar-fancy";
+import ClockSVG from "./SvgComponents/ClockSVG";
+import TimeoutComponent from "./TimeoutComponent";
+
+// Function to format the time string
+const timeString = (time) => {
+  const minutes = time.getMinutes();
+  const seconds = time.getSeconds().toString().padStart(2, "0");
+  return `${minutes}:${seconds}`;
+};
+
+const calcPercentage = (time, initialtotalTime) => {
+  const totaltimeleft = time.getMinutes() * 60 + time.getSeconds();
+  const totalTime = initialtotalTime * 60;
+  const percentage = (totaltimeleft / totalTime) * 100;
+  return percentage;
+};
+
+// Custom hook to manage the timer
+function useTime(
+  time,
+  setTime,
+  totalTime,
+  setTotalTime,
+  percentage,
+  setPercentage,
+  timerRunning,
+  setTimerRunning
+) {
+  const currentTimeRef = useRef(time); // Ref to hold the current time value
+
+  useEffect(() => {
+    // Update the ref with the current time value
+    currentTimeRef.current = time;
+
+    // Set up the interval to decrement the time every second
+    const intervalId = setInterval(() => {
+      if (timerRunning) {
+        setTime((prevTime) => {
+          // Decrement the time by 1 second
+          const newTime = new Date(prevTime.getTime() - 1000);
+          const newPercentage = calcPercentage(newTime, totalTime);
+          setPercentage(newPercentage);
+
+          // Stop the timer if it reaches 00:00
+
+          if (newTime.getMinutes() === 0 && newTime.getSeconds() === 0) {
+            setTimerRunning(false);
+            setTime(new Date(0, 0, 0, 0, 1));
+          }
+          return newTime;
+        });
+      }
+    }, 1000);
+
+    // Cleanup function to clear the interval
+    return () => clearInterval(intervalId);
+
+    // Dependencies: time, timerRunning (only re-run the effect if these values change)
+  }, [
+    time,
+    setTime,
+    totalTime,
+    setTotalTime,
+    percentage,
+    setPercentage,
+    timerRunning,
+    setTimerRunning,
+  ]);
+
+  // Return the current time state
+  return {
+    time,
+    setTime,
+    totalTime,
+    setTotalTime,
+    percentage,
+    setPercentage,
+    timerRunning,
+    setTimerRunning,
+  };
+}
+
+// Timer component using the useTime hook
+export default function Timer({
+  time,
+  setTime,
+  totalTime,
+  setTotalTime,
+  percentage,
+  setPercentage,
+  timerRunning,
+  setTimerRunning,
+  category,
+  showApp,
+  setShowApp,
+  chooseHome,
+}) {
+  // Get the current time using the useTime hook
+  const {
+    time: initialTime,
+    setTime: updateTime,
+    totalTime: updateTotalTime,
+    setTotalTime: updateSetTotalTime,
+    percentage: updatePercentage,
+    setPercentage: updateSetPercentage,
+    timerRunning: updateTimerRunning,
+    setTimerRunning: updateSetTimerRunning,
+  } = useTime(
+    time,
+    setTime,
+    totalTime,
+    setTotalTime,
+    percentage,
+    setPercentage,
+    timerRunning,
+    setTimerRunning
+  );
+  const per = updatePercentage.toFixed(0);
+  // Render the formatted time string
   return (
     <section id="timer-section" className="flex flex-column">
-      <svg
-        width="44"
-        height="44"
-        viewBox="0 0 44 44"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M21.9999 41.7083C12.3933 41.7083 4.58325 33.8983 4.58325 24.2917C4.58325 14.685 12.3933 6.875 21.9999 6.875C31.6066 6.875 39.4166 14.685 39.4166 24.2917C39.4166 33.8983 31.6066 41.7083 21.9999 41.7083ZM21.9999 9.625C13.9149 9.625 7.33325 16.2067 7.33325 24.2917C7.33325 32.3767 13.9149 38.9583 21.9999 38.9583C30.0849 38.9583 36.6666 32.3767 36.6666 24.2917C36.6666 16.2067 30.0849 9.625 21.9999 9.625Z"
-          fill="#800080"
-        ></path>
-        <path
-          d="M22 25.2084C21.2483 25.2084 20.625 24.5851 20.625 23.8334V14.6667C20.625 13.9151 21.2483 13.2917 22 13.2917C22.7517 13.2917 23.375 13.9151 23.375 14.6667V23.8334C23.375 24.5851 22.7517 25.2084 22 25.2084Z"
-          fill="#800080"
-        ></path>
-        <path
-          d="M27.5 5.04175H16.5C15.7483 5.04175 15.125 4.41841 15.125 3.66675C15.125 2.91508 15.7483 2.29175 16.5 2.29175H27.5C28.2517 2.29175 28.875 2.91508 28.875 3.66675C28.875 4.41841 28.2517 5.04175 27.5 5.04175Z"
-          fill="#800080"
-        ></path>
-      </svg>
+      {timerRunning ? (
+        <>
+          <ProgressBar
+            className="space"
+            label={"Time left "}
+            primaryColor={
+              per < 30 ? "#ff0358" : per < 50 ? "#1ee226" : "#555aab"
+            }
+            secondaryColor={
+              per < 30 ? "#ff0358" : per < 50 ? "#4caf50" : "#0575e6"
+            }
+            //darkTheme
+            progressWidth={`${per}%`}
+            score={per}
+          />
+          <ClockSVG />
+          <span>{timeString(initialTime)}</span>
+        </>
+      ) : (
+        <TimeoutComponent
+          timerRunning={updateTimerRunning}
+          setTimerRunning={updateSetTimerRunning}
+          time={initialTime}
+          setTime={updateTime}
+          totalTime={updateTotalTime}
+          setTotalTime={updateSetTotalTime}
+          percentage={updatePercentage}
+          setPercentage={updateSetPercentage}
+          name="Restart"
+          showApp={showApp}
+          setShowApp={setShowApp}
+          chooseHome={chooseHome}
+        />
+      )}
     </section>
   );
 }
