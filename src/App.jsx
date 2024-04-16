@@ -45,6 +45,8 @@ function App(props) {
   const [timerRunning, setTimerRunning] = useState(true);
   const [percentage, setPercentage] = useState(0);
   const [isSelectedDiff, setIsSelectedDiff] = useState(false);
+  const [questionsNumberPickerValue, setQuestionsNumberPickerValue] =
+    useState(1);
 
   function chooseHome() {
     setShowApp(false);
@@ -74,7 +76,9 @@ function App(props) {
   };
 
   const updateSetQuestionsList = (value) => {
-    setQuestionsList(value);
+    //setQuestionsList(value);
+    const qlist = value.slice(0, questionsNumberPickerValue);
+    setQuestionsList(qlist);
   };
 
   const correctAnswersCounter = () => {
@@ -101,6 +105,13 @@ function App(props) {
 
   function updateIsSelectedDiff(value) {
     setIsSelectedDiff(value);
+  }
+  function updateSetShowText(value) {
+    setShowText(value);
+  }
+
+  function updateGetQuestionsNumberPickerValue(value) {
+    setQuestionsNumberPickerValue(value);
   }
 
   useEffect(() => {
@@ -132,6 +143,8 @@ function App(props) {
           chooseDiff={updateChooseDiff}
           isSelectedDiff={isSelectedDiff}
           setIsSelectedDiff={updateIsSelectedDiff}
+          questionsNumberPickerValue={questionsNumberPickerValue}
+          setQuestionsNumberPickerValue={updateGetQuestionsNumberPickerValue}
         />
       ) : (
         categoryValue && (
@@ -187,6 +200,7 @@ function App(props) {
                         questions={questionsList}
                         setShowSlider={setShowSlider}
                         setShowResult={setShowResult}
+                        setShowText={updateSetShowText}
                         correctState={correctState}
                         correctAnswer={
                           questionsList[currentQuestion].correctAnswer

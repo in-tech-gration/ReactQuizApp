@@ -4,6 +4,7 @@ import Header from "./Header";
 import "../index.css";
 import DiffOptions from "./DiffOptions";
 import Questions_counter_button from "./Questions_counter_button/Questions_counter_button";
+import Slider from "react-smooth-range-input";
 
 export default function MainMenu({
   showApp,
@@ -20,6 +21,9 @@ export default function MainMenu({
   css3_questions,
   js_questions,
   react_questions,
+  getQuestionsNumberPickerValue,
+  questionsNumberPickerValue,
+  setQuestionsNumberPickerValue,
 }) {
   const quizCategories = ["HTML", "CSS", "JavaScript", "React"];
 
@@ -73,6 +77,9 @@ export default function MainMenu({
       (_, index) => index + 1
     );
 
+  function getQuestionsNumberPickerValue(value) {
+    setQuestionsNumberPickerValue(value);
+  }
 
   return (
     <>
@@ -84,7 +91,19 @@ export default function MainMenu({
               Welcome to the{" "}
               <span className="bold">Intechgration Developer Quiz!</span>
             </h1>
-            <Questions_counter_button minValue={1} maxValue={45} />
+            {/* <Questions_counter_button minValue={1} maxValue={45} /> */}
+            <div
+              id="questions-counter-text-wrapper"
+              className="flex flex-column"
+            >
+              <p>Number of Questions</p>
+              <Slider
+                value={questionsNumberPickerValue}
+                min={1}
+                max={45}
+                onChange={getQuestionsNumberPickerValue}
+              />
+            </div>
             <DiffOptions
               chooseDiff={chooseDiff}
               isSelectedDiff={isSelectedDiff}

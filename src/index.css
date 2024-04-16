@@ -614,6 +614,24 @@ h2 {
   border-bottom: 5px outset #38d889;
 }
 
+#questions-counter-text-wrapper {
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+.start-menu > .left-content #questions-counter-text-wrapper p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+
 /* Keyframe animation */
 @keyframes slide-right {
   from {
