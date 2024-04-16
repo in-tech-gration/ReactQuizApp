@@ -1,0 +1,100 @@
+.questions-counter-button-container {
+  align-items: center;
+  justify-content: space-around;
+  justify-items: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 240px;
+}
+
+.start-menu > .left-content .questions-counter-button-container > p {
+  justify-items: center;
+  margin: 16px auto;
+}
+
+.questions-counter-button.btn-group {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #f5f8fb;
+  transition: border 0.3s ease;
+  justify-content: space-between;
+  max-width: 150px;
+  margin: 0 auto;
+  border: 2px solid #356cfc;
+}
+
+.questions-counter-button.btn-group:hover {
+  border: 2px solid #4097fe;
+}
+
+.questions-counter-button button {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4097fe;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.questions-counter-button button:hover {
+  background-color: #f3f9ff;
+  width: 25px;
+  height: 40px;
+  color: black;
+  border-radius: unset;
+}
+
+.questions-counter-button button:focus,
+.questions-counter-button button:focus-visible {
+  outline: none;
+}
+
+.start-menu > .left-content .questions-counter-button p {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.start-menu > .left-content .questions-counter-button p input {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: center;
+  color: #626c7f;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.start-menu
+  > .left-content
+  .questions-counter-button
+  p
+  input::-webkit-outer-spin-button,
+.start-menu
+  > .left-content
+  .questions-counter-button
+  p
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.start-menu > .left-content .questions-counter-button p input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}

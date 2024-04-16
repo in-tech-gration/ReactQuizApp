@@ -3,6 +3,7 @@ import App from "../App";
 import Header from "./Header";
 import "../index.css";
 import DiffOptions from "./DiffOptions";
+import Questions_counter_button from "./Questions_counter_button/Questions_counter_button";
 
 export default function MainMenu({
   showApp,
@@ -83,6 +84,7 @@ export default function MainMenu({
               Welcome to the{" "}
               <span className="bold">Intechgration Developer Quiz!</span>
             </h1>
+            <Questions_counter_button minValue={1} maxValue={45} />
             <DiffOptions
               chooseDiff={chooseDiff}
               isSelectedDiff={isSelectedDiff}
@@ -113,16 +115,6 @@ export default function MainMenu({
                     <p className="questions-counter-text">
                       {getCategoryLength(categoryFiltered)}
                     </p>
-                    <label>
-                      Number of questions:
-                      <select name="questions">
-                        {arrayFromCategory(category).map((value, index) => (
-                          <option key={index} value={value}>
-                            {value}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
                   </button>
                 </div>
               );
