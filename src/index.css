@@ -620,9 +620,11 @@ h2 {
   align-items: center;
   flex: 1;
   padding: 1rem 2rem;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-.start-menu > .left-content #questions-counter-text-wrapper p{
+.start-menu > .left-content #questions-counter-text-wrapper p {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -630,7 +632,6 @@ h2 {
   margin-bottom: 4px;
   font-weight: bold;
 }
-
 
 /* Keyframe animation */
 @keyframes slide-right {
