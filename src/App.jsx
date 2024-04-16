@@ -57,6 +57,8 @@ function App(props) {
     setCurrentQuestion(0);
     setCorrectAnswers(0);
     setIncorrectAnswers(0);
+    setShowResult(false)
+    setShowText(false);
   }
 
   const updateTimerRunning = (value) => {
